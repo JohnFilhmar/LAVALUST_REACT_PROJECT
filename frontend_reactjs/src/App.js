@@ -9,15 +9,9 @@ import Mainpage from "./components/mainpage";
 function App() {
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="flex-grow">
-        <div className="container mx-auto">
           <Router>
             <AppContent />
           </Router>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -27,13 +21,21 @@ const AppContent = () => {
 
   return (
     <>
-      {!isLogIn && <TopNavigationBar />}
-        <Switch>
-          <Route exact path="/" component={Login}/>
-          <Route path="/register" component={Register}/>
-          <Route path="/mainpage" component={Mainpage}/>
-        </Switch>
-      {!isLogIn && <BottomFooter />}
+      <div className="flex flex-col min-h-screen">
+        <div className="flex-grow">
+          {!isLogIn && <TopNavigationBar />}
+          <div className="container mx-auto">
+              <Switch>
+                <Route exact path="/" component={Login}/>
+                <Route path="/register" component={Register}/>
+                <Route path="/mainpage" component={Mainpage}/>
+              </Switch>
+          </div>
+        </div>
+        <footer className="border-t-4">
+          {!isLogIn && <BottomFooter />}
+        </footer>
+      </div>
     </>
   );
 
